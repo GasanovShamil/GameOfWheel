@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GameOfWheel</title>
+    <meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device.width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+
+    <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name %>">
+      <a class="close" data-dismiss="alert">x</a>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+    </div>
+    <% end %>
+    
+    <br>
+
+    <%= yield %>
+    
+    </div>
+  </body>
+</html>
