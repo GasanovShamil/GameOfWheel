@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  after_create do |user|
+  	user.tokens = 100
+  end
   validates :usename, presence: true, uniqueness: true
   rolify
   # Include default devise modules. Others available are:
