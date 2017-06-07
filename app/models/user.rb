@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates :usename, presence: true, uniqueness: true
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
