@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create do |user|
+  before_create do |user|
   	user.tokens = 100
   end
   validates :username, presence: true, uniqueness: true
