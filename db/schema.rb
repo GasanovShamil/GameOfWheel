@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607102452) do
+ActiveRecord::Schema.define(version: 20170609105857) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20170607102452) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer  "prize"
+    t.integer  "winner_id"
+    t.datetime "created_at",    null: false
+    t.integer  "created_by_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "updated_at",    null: false
+    t.index ["created_by_id"], name: "index_rooms_on_created_by_id"
+    t.index ["winner_id"], name: "index_rooms_on_winner_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,6 +58,16 @@ ActiveRecord::Schema.define(version: 20170607102452) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+  end
+
+  create_table "users_rooms", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "room_id"
+    t.date     "participate_date"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["room_id"], name: "index_users_rooms_on_room_id"
+    t.index ["user_id"], name: "index_users_rooms_on_user_id"
   end
 
 end

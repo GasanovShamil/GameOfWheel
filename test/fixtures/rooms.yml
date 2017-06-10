@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prize: 1
+  winner: 1
+  created_at: 2017-06-09
+  created_by: 1
+  start_date: 2017-06-09
+  end_date: 2017-06-09
+
+two:
+  prize: 1
+  winner: 1
+  created_at: 2017-06-09
+  created_by: 1
+  start_date: 2017-06-09
+  end_date: 2017-06-09
