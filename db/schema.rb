@@ -24,14 +24,12 @@ ActiveRecord::Schema.define(version: 20170609105857) do
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "prize"
-    t.integer  "winner_id"
-    t.datetime "created_at",    null: false
-    t.integer  "created_by_id"
+    t.integer  "winner"
+    t.datetime "created_at", null: false
+    t.integer  "created_by"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "updated_at",    null: false
-    t.index ["created_by_id"], name: "index_rooms_on_created_by_id"
-    t.index ["winner_id"], name: "index_rooms_on_winner_id"
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

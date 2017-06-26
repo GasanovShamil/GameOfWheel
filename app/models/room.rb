@@ -1,7 +1,6 @@
 class Room < ApplicationRecord
-	belongs_to :winner, :class_name => 'Users'
-	belongs_to :created_by, :class_name => 'Users'
-	has_many :users
+	has_one :user, foreign_key: 'winner'
+	has_one :user, foreign_key: 'created_by'
 	has_many :users_rooms
 	has_many :users, through: :users_rooms
 end

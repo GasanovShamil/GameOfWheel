@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   after_create :assign_default_role
+
   before_create do |user|
   	user.tokens = 100
   end
+  
   has_many :users_rooms
   has_many :rooms, through: :users_rooms
 
