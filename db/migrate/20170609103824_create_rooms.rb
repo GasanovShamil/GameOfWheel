@@ -5,6 +5,7 @@ class CreateRooms < ActiveRecord::Migration[5.0]
       t.integer :created_by
       t.date :start_date
       t.date :end_date
+      t.integer :share_price
       
       t.timestamps
     end
