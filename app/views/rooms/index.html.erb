@@ -1,4 +1,4 @@
-<h1>Liste des rooms</h1>
+<h1>Liste des salons <%= link_to 'Ajouter', new_room_path, class: "btn btn-success" %></h1>
 	
 <% if @rooms.any? %>
 	<%= will_paginate @rooms, renderer: BootstrapPagination::Rails %>
@@ -9,8 +9,4 @@
 	
 <% else %>
 	<p>Il n'y a pas encore de salon</p>
-<% end %>
-
-<% if user_signed_in? %>
-	<p><%= link_to 'Ajouter un salon', new_room_path, class: "btn btn-success" %></p>
 <% end %>

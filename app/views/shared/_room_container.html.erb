@@ -1,10 +1,11 @@
 <div class="col-md-4 portfolio-item">
-    <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-    </a>
+	<%= link_to image_tag("http://placehold.it/700x400", class: "img-responsive"), room_path(room.id) %>
     <h3>
-        <a href="#">Salon - <%= room.prize.name %></a>
-        <span class="pull-right"><small> Tokens : <span class="label label-info"><%= room.share_price %></span></small></span>
+    	<%= link_to "Salon - " + room.prize.name, room_path(room.id) %>
+        <small>
+	        <%= room.prize.price %> <i class="fa fa-eur"></i>
+	        <span class="label label-info pull-right"><%= room.share_price %></span>
+        </small>
     </h3>                
     <p><%= room.prize.description %></p>
 </div>
