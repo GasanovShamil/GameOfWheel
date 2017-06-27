@@ -1,7 +1,8 @@
 class PrizesController < ApplicationController
-	before_action :set_room, only: [:show]
+	before_action :set_prize, only: [:show]
 
 	def index
+		@prizes = Prize.paginate(page: params[:page], per_page: 10).includes(:type)
 	end
 
 	def new
@@ -12,7 +13,7 @@ class PrizesController < ApplicationController
 	end
 
 	def create
-		@prize = Prize.new room_params
+		@prize = Prize.new prize_params
 
 		if @prize.save
 			redirect_to root_path
@@ -23,7 +24,7 @@ class PrizesController < ApplicationController
 
 	private
 
-	def set_room
+	def set_prize
 		@prize = Prize.find(params[:id])
 	end
 

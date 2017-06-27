@@ -2,6 +2,7 @@ class RoomsController < ApplicationController
 	before_action :set_room, only: [:show]
 
 	def index
+		@rooms = Room.paginate(page: params[:page], per_page: 9).includes(:prize)
 	end
 
 	def new

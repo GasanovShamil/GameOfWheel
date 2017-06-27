@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20170627102930) do
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "winner"
-    t.datetime "created_at", null: false
     t.integer  "created_by"
     t.date     "start_date"
     t.date     "end_date"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "prize_id"
     t.index ["prize_id"], name: "index_rooms_on_prize_id"
