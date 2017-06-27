@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609105857) do
+ActiveRecord::Schema.define(version: 20170627102930) do
+
+  create_table "prizes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "photo_path"
+    t.float    "price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -23,13 +32,14 @@ ActiveRecord::Schema.define(version: 20170609105857) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer  "prize"
     t.integer  "winner"
     t.datetime "created_at", null: false
     t.integer  "created_by"
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "updated_at", null: false
+    t.integer  "prize_id"
+    t.index ["prize_id"], name: "index_rooms_on_prize_id"
   end
 
   create_table "users", force: :cascade do |t|

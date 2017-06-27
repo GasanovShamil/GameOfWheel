@@ -35,6 +35,6 @@ class RoomsController < ApplicationController
 	end
 
 	def room_params
-		params.require(:room).permit(:prize, :start_date, :end_date, :created_by)
+		params.require(:room).permit(:prize_id, :start_date, :end_date, :created_by)
 	end
 end
