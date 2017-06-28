@@ -1,32 +1,30 @@
-<h1>Liste des rooms</h1>
+<h1>Liste des lots <%= link_to 'Ajouter', new_prize_path, class: "btn btn-success" %></h1>
 	
-<% if @rooms.any? %>
-	<%= will_paginate @rooms, renderer: BootstrapPagination::Rails %>
-	
-	<table class="table">
+<% if @prizes.any? %>
+
+	<%= will_paginate @prizes, renderer: BootstrapPagination::Rails %>
+
+	<table class="table table-stripped">
 		<thead>
 			<tr>
 				<td>Nom</td>
-				<td>Début</td>
-				<td>Fin</td>
+				<td>Description</td>
 				<td>Catégories</td>
 			</tr>
 		</thead>
 		<tbody>
-			<% @rooms.each do |room| %>
+			<% @prizes.each do |prize| %>
 			<tr>
-				<td>Salon de "<%= room.prize.name %>"</td>
-				<td><%= room.start_date %></td>
-				<td><%= room.end_date %></td>
-				<td></td>
-				<td><%= render partial: 'moves_list', locals: { moves: room.moves } %></td>
+				<td><%= prize.name %></td>
+				<td><%= prize.description %></td>
+				<td><%= render partial: 'categories_list', locals: { categories: prize.categories } %></td>
 				<td>
-					<%= link_to 'Afficher', room_path(room.id), class: "btn btn-info" %>
-					<%= link_to 'Modifier', edit_room_path(room.id), class: "btn btn-warning" %>
-					<%= link_to 'Supprimer', room,
+					<%= link_to 'Afficher', prize_path(prize.id), class: "btn btn-info" %>
+					<%= link_to 'Modifier', edit_prize_path(prize.id), class: "btn btn-warning" %>
+					<%= link_to 'Supprimer', prize,
 						method: :delete,
 						data:{
-							confirm: 'Etes-vous sur de vouloir supprimer ce salon?'
+							confirm: 'Etes-vous sur de vouloir supprimer ce lot ?'
 						},
 					class: 'btn btn-danger' %>
 				</td>
@@ -34,10 +32,7 @@
 			<% end %>
 		</tbody>
 	</table>
-<% else %>
-	<p>Il n'y a pas encore de salon</p>
-<% end %>
 
-<% if user_signed_in? %>
-	<p><%= link_to 'Ajouter un salon', new_room_path, class: "btn btn-success" %></p>
+<% else %>
+	<p>Il n'y a pas encore de lots</p>
 <% end %>

@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 	before_action :set_category, only: [:show]
 
 	def index
-		@categories = Category.paginate(page: params[:page], per_page: 10).includes(:type)
+		@categories = Category.paginate(page: params[:page], per_page: 10)
 	end
 
 	def new

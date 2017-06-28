@@ -1,0 +1,37 @@
+<h1>Ajouter un lot</h1>
+
+<%= simple_form_for @prize do |field| %>
+
+	<div class="row">
+		<div class="form-group col-lg-5">
+			<p><%= field.input :name, label: 'Nom', class: 'form-control' %></p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-lg-5">
+			<p><%= field.input :description, label: 'Description', class: 'form-control' %></p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-lg-5">
+			<p><%= field.input :photo_path, label: 'Image', class: 'form-control' %></p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-lg-5">
+			<p><%= field.input :price, label: 'Prix', class: 'form-control' %></p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-lg-5">
+			<p><%= field.association :categories, label: 'Catégories', as: :check_boxes, class: 'form-control'%></p>
+		</div>
+	</div>
+
+	<p><%= field.submit 'Sauvegarder', class: 'btn btn-primary' %></p>
+
+<% end %>

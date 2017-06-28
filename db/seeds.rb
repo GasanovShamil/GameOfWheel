@@ -14,11 +14,28 @@ u.add_role :admin
 
 User.create!({:username => "Utilisateur", :email => "user@mail.com", :password => "password", :password_confirmation => "password" })
 
+#################### Categories
+
+Category.create!({:name => "High Tech" })
+Category.create!({:name => "Téléphonie" })
+Category.create!({:name => "Sport" })
+Category.create!({:name => "Nature" })
+Category.create!({:name => "Informatique" })
+Category.create!({:name => "Jeux" })
+
 #################### Prizes
 
 Prize.create!({:name => "IPhone 7", :description => "Téléphone apple", :photo_path => nil, :price => 799.99 })
 Prize.create!({:name => "VTT BTwin", :description => "Superbe vélo tout terrain", :photo_path => nil, :price => 347.49 })
 Prize.create!({:name => "Playstation 4", :description => "Console de jeu de salon par Sony", :photo_path => nil, :price => 399 })
+
+#################### PrizeCategories
+
+PrizeCategory.create!({:prize_id => 1, :category_id => 1 })
+PrizeCategory.create!({:prize_id => 1, :category_id => 2 })
+PrizeCategory.create!({:prize_id => 2, :category_id => 3 })
+PrizeCategory.create!({:prize_id => 2, :category_id => 4 })
+PrizeCategory.create!({:prize_id => 3, :category_id => 6 })
 
 #################### Rooms
 

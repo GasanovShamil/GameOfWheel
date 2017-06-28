@@ -2,7 +2,7 @@ class PrizesController < ApplicationController
 	before_action :set_prize, only: [:show]
 
 	def index
-		@prizes = Prize.paginate(page: params[:page], per_page: 10).includes(:type)
+		@prizes = Prize.paginate(page: params[:page], per_page: 10)
 	end
 
 	def new

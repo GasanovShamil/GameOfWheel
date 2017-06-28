@@ -1,0 +1,7 @@
+<% if categories.any? %>
+	<% categories.each do |category| %>
+		<%= category_badge(category) %>
+	<% end %>
+<% else %>
+	&empty;
+<% end %>
