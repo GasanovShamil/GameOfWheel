@@ -1,33 +1,5 @@
 <h1>Ajouter un salon</h1>
 
-<%= simple_form_for @room do |field| %>
+<%= render partial: 'form' %>
 
-	<div class="row">
-		<div class="form-group col-lg-5">
-			<p><%= field.input :start_date, label: 'Nom', class: 'form-control' %></p>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="form-group col-lg-5">
-			<p><%= field.input :end_date, label: 'Niveau', class: 'form-control' %></p>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="form-group col-lg-5">
-			<p><%= field.input :share_price, label: 'Participation', class: 'form-control' %></p>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="form-group col-lg-5">
-			<p><%= field.association :prize, label: 'Lot', class: 'form-control' %></p>
-		</div>
-	</div>
-
-	<p>
-		<%= field.submit 'Sauvegarder', class: 'btn btn-primary' %>
-	</p>
-
-<% end %>
+<p><%= link_to 'Retour à la liste des salons', rooms_path, class: 'btn btn-success' %></p>

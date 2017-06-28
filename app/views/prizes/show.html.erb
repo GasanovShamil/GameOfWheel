@@ -1,0 +1,18 @@
+<h1>Afficher un lot</h1>
+
+<p>Nom : <%= @prize.name %></p>
+<p>Description : <%= @prize.name %></p>
+<p>Photo : <%= @prize.name %></p>
+<p>Prix : <%= @prize.name %></p>
+<p>Catégories : <%= render partial: '/shared/categories_list', locals: { categories: @prize.categories } %></p>
+
+<p>
+	<%= link_to 'Editer',  edit_prize_path(@prize), class: 'btn btn-warning' %>
+	<%= link_to 'Supprimer', @prize, 
+		method: :delete, 
+		data: { 
+			confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce lot ?'
+		}, 
+		class: 'btn btn-danger' %>
+	<%= link_to 'Retour à la liste des lots', prizes_path, class: 'btn btn-success' %>
+</p>

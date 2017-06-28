@@ -1,0 +1,13 @@
+<h1>Edition d'un salon</h1>
+
+<%= render partial: 'form' %>
+
+<p>
+	<%= link_to 'Supprimer', @room, 
+		method: :delete, 
+		data: { 
+			confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce salon ?'
+		}, 
+		class: 'btn btn-danger' %>
+	<%= link_to 'Retour à la liste des salons', rooms_path, class: 'btn btn-success' %>
+</p>

@@ -1,0 +1,11 @@
+<%= simple_form_for @category do |field| %>
+
+	<div class="row">
+		<div class="form-group col-lg-5">
+			<p><%= field.input :name, label: 'Nom', class: 'form-control' %></p>
+		</div>
+	</div>
+
+	<p><%= field.submit 'Sauvegarder', class: 'btn btn-primary' %></p>
+
+<% end %>

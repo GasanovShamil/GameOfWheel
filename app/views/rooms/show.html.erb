@@ -1,6 +1,28 @@
-<h1>Afficher un salon</h1>
+<h1 class="text-center">Afficher un salon</h1>
 
-<p>Lot : <%= @room.prize %></p>
-<p>Début : <%= @room.start_date %></p>
-<p>Fin : <%= @room.end_date %></p>
-<p>Créé par :  <%= @created_by.username %></p>
+<div class="row">
+	<div class="col-md-5">
+		<h3 class="text-center">Informations</h3>
+		<p>Début : <%= @room.start_date %></p>
+		<p>Fin : <%= @room.end_date %></p>
+		<p>Créé par :  <%= @created_by.username %></p>
+	</div>
+	<div class="col-md-5 col-md-offset-2">
+		<h3 class="text-center">Lot</h3>
+		<p>Nom : <%= @room.prize.name %></p>
+		<p>Description : <%= @room.prize.description %></p>
+		<p>Prix :  <%= @room.prize.price %></p>
+		<p>Catégories :  <%= render partial: '/shared/categories_list', locals: { categories: @room.prize.categories } %></p>
+	</div>
+</div>
+
+<p>
+	<%= link_to 'Editer',  edit_room_path(@room), class: 'btn btn-warning' %>
+	<%= link_to 'Supprimer', @room, 
+		method: :delete, 
+		data: { 
+			confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce salon ?'
+		}, 
+		class: 'btn btn-danger' %>
+	<%= link_to 'Retour à la liste des salons', rooms_path, class: 'btn btn-success' %>
+</p>

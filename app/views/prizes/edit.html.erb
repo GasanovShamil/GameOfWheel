@@ -1,0 +1,13 @@
+<h1>Edition d'un lot</h1>
+
+<%= render partial: 'form' %>
+
+<p>
+	<%= link_to 'Supprimer', @prize, 
+		method: :delete, 
+		data: { 
+			confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce lot ?'
+		}, 
+		class: 'btn btn-danger' %>
+	<%= link_to 'Retour à la liste des lots', prizes_path, class: 'btn btn-success' %>
+</p>

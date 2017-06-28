@@ -1,15 +1,18 @@
 class RoomsController < ApplicationController
-	before_action :set_room, only: [:show]
+	before_action :set_room, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@rooms = Room.paginate(page: params[:page], per_page: 9).includes(:prize)
+	end
+
+	def show
 	end
 
 	def new
 		@room = Room.new
 	end
 
-	def show
+	def edit
 	end
 
 	def create
@@ -21,6 +24,19 @@ class RoomsController < ApplicationController
 		else
 			render 'new'
 		end
+	end
+
+	def update
+		if @room.update room_params
+			redirect_to @room
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@room.destroy
+		redirect_to rooms_path
 	end
 
 	private
@@ -36,6 +52,6 @@ class RoomsController < ApplicationController
 	end
 
 	def room_params
-		params.require(:room).permit(:prize_id, :start_date, :end_date, :created_by)
+		params.require(:room).permit(:prize_id, :start_date, :end_date, :share_price, :created_by)
 	end
 end

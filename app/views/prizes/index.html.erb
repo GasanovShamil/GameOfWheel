@@ -17,7 +17,7 @@
 			<tr>
 				<td><%= prize.name %></td>
 				<td><%= prize.description %></td>
-				<td><%= render partial: 'categories_list', locals: { categories: prize.categories } %></td>
+				<td><%= render partial: '/shared/categories_list', locals: { categories: prize.categories } %></td>
 				<td>
 					<%= link_to 'Afficher', prize_path(prize.id), class: "btn btn-info" %>
 					<%= link_to 'Modifier', edit_prize_path(prize.id), class: "btn btn-warning" %>

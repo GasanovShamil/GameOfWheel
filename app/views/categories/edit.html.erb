@@ -1,0 +1,13 @@
+<h1>Edition d'une catégorie</h1>
+
+<%= render partial: 'form' %>
+
+<p>
+	<%= link_to 'Supprimer', @category, 
+		method: :delete, 
+		data: { 
+			confirm: 'Êtes-vous sûr(e) de vouloir supprimer cette catégorie ?'
+		}, 
+		class: 'btn btn-danger' %>
+	<%= link_to 'Retour à la liste des lots', categories_path, class: 'btn btn-success' %>
+</p>

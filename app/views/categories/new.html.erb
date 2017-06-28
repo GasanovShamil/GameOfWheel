@@ -1,13 +1,5 @@
 <h1>Ajouter une catégorie</h1>
 
-<%= simple_form_for @category do |field| %>
+<%= render partial: 'form' %>
 
-	<div class="row">
-		<div class="form-group col-lg-5">
-			<p><%= field.input :name, label: 'Nom', class: 'form-control' %></p>
-		</div>
-	</div>
-
-	<p><%= field.submit 'Sauvegarder', class: 'btn btn-primary' %></p>
-
-<% end %>
+<p><%= link_to 'Retour à la liste des lots', categories_path, class: 'btn btn-success' %></p>

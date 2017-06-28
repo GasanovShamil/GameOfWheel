@@ -1,0 +1,14 @@
+<h1>Afficher une catégorie</h1>
+
+<p>Nom : <%= @category.name %></p>
+
+<p>
+	<%= link_to 'Editer',  edit_category_path(@category), class: 'btn btn-warning' %>
+	<%= link_to 'Supprimer', @category, 
+		method: :delete, 
+		data: { 
+			confirm: 'Êtes-vous sûr(e) de vouloir supprimer cette catégorie ?'
+		}, 
+		class: 'btn btn-danger' %>
+	<%= link_to 'Retour à la liste des catégories', categories_path, class: 'btn btn-success' %>
+</p>
