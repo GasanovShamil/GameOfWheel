@@ -1,11 +1,12 @@
 <div class="col-md-4 portfolio-item">
 	<%= link_to image_tag("http://placehold.it/700x400", class: "img-responsive"), room_path(room.id) %>
-    <h3>
-    	<%= link_to "Salon - " + room.prize.name, room_path(room.id) %>
-        <small>
-	        <%= room.prize.price %> <i class="fa fa-eur"></i>
-	        <span class="label label-info pull-right"><%= room.share_price %></span>
-        </small>
-    </h3>                
-    <p><%= room.prize.description %></p>
+	<h3>
+		<%= link_to "Salon - " + room.prize.name, room_path(room.id) %>
+		<small class="pull-right"><%= room.prize.price %> <i class="fa fa-eur"></i></small>
+	</h3>
+	<p>
+		Participation : <span class="label label-info"><%= room.share_price %></span>
+		 - Du <%= room.start_date.strftime('%d/%m/%Y') %> au <%= room.end_date.strftime('%d/%m/%Y') %>
+	</p>
+	<p><%= room.prize.description %></p>
 </div>

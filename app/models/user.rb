@@ -5,8 +5,8 @@ class User < ApplicationRecord
   	user.tokens = 100
   end
   
-  has_many :users_rooms
-  has_many :rooms, through: :users_rooms
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
 
   validates :username, presence: true, uniqueness: true
   rolify
