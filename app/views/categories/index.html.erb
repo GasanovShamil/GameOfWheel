@@ -1,34 +1,43 @@
-<h1>Liste des catégories <%= link_to 'Ajouter', new_category_path, class: "btn btn-success" %></h1>
-	
-<% if @categories.any? %>
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-9">
+			<h2 class="text-center">Liste des catégories</h2>
+		</div>
+		<div class="col-md-3">
+			<h2><%= link_to 'Ajouter', new_category_path, class: "btn btn-success text-right" %></h2>
+		</div>
+	</div>
+		
+	<% if @categories.any? %>
 
-	<%= will_paginate @categories, renderer: BootstrapPagination::Rails %>
+		<%= will_paginate @categories, renderer: BootstrapPagination::Rails %>
 
-	<table class="table table-stripped">
-		<thead>
-			<tr>
-				<td>Nom</td>
-			</tr>
-		</thead>
-		<tbody>
-			<% @categories.each do |category| %>
-			<tr>
-				<td><%= category.name %></td>
-				<td>
-					<%= link_to 'Afficher', category_path(category.id), class: "btn btn-info" %>
-					<%= link_to 'Modifier', edit_category_path(category.id), class: "btn btn-warning" %>
-					<%= link_to 'Supprimer', category,
-						method: :delete,
-						data:{
-							confirm: 'Etes-vous sur de vouloir supprimer cette catégorie ?'
-						},
-					class: 'btn btn-danger' %>
-				</td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+		<table class="table table-stripped">
+			<thead>
+				<tr class="text-center">
+					<td class="text-primary"><strong>Nom</strong></td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @categories.each do |category| %>
+				<tr>
+					<td class="text-center"><%= category.name %></td>
+					<td class="text-right">
+						<%= link_to 'Afficher', category_path(category.id), class: "btn btn-info" %>
+						<%= link_to 'Modifier', edit_category_path(category.id), class: "btn btn-warning" %>
+						<%= link_to 'Supprimer', category,
+							method: :delete,
+							data:{
+								confirm: 'Etes-vous sur de vouloir supprimer cette catégorie ?'
+							},
+						class: 'btn btn-danger' %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
 
-<% else %>
-	<p>Il n'y a pas encore de lots</p>
-<% end %>
+	<% else %>
+		<p>Il n'y a pas encore de lots</p>
+	<% end %>
+</div>

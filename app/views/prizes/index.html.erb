@@ -1,38 +1,47 @@
-<h1>Liste des lots <%= link_to 'Ajouter', new_prize_path, class: "btn btn-success" %></h1>
-	
-<% if @prizes.any? %>
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-9">
+			<h2 class="text-center">Liste des lots</h2>
+		</div>
+		<div class="col-md-3">
+			<h2><%= link_to 'Ajouter', new_prize_path, class: "btn btn-success text-right" %></h2>
+		</div>
+	</div>
+		
+	<% if @prizes.any? %>
 
-	<%= will_paginate @prizes, renderer: BootstrapPagination::Rails %>
+		<%= will_paginate @prizes, renderer: BootstrapPagination::Rails %>
 
-	<table class="table table-stripped">
-		<thead>
-			<tr>
-				<td>Nom</td>
-				<td>Description</td>
-				<td>Catégories</td>
-			</tr>
-		</thead>
-		<tbody>
-			<% @prizes.each do |prize| %>
-			<tr>
-				<td><%= prize.name %></td>
-				<td><%= prize.description %></td>
-				<td><%= render partial: '/shared/categories_list', locals: { categories: prize.categories } %></td>
-				<td>
-					<%= link_to 'Afficher', prize_path(prize.id), class: "btn btn-info" %>
-					<%= link_to 'Modifier', edit_prize_path(prize.id), class: "btn btn-warning" %>
-					<%= link_to 'Supprimer', prize,
-						method: :delete,
-						data:{
-							confirm: 'Etes-vous sur de vouloir supprimer ce lot ?'
-						},
-					class: 'btn btn-danger' %>
-				</td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+		<table class="table table-stripped">
+			<thead>
+				<tr>
+					<td class="text-primary"><strong>Nom</strong></td>
+					<td class="text-primary"><strong>Description</strong></td>
+					<td class="text-primary"><strong>Catégories</strong></td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @prizes.each do |prize| %>
+				<tr>
+					<td><%= prize.name %></td>
+					<td><%= prize.description %></td>
+					<td><%= render partial: '/shared/categories_list', locals: { categories: prize.categories } %></td>
+					<td>
+						<%= link_to 'Afficher', prize_path(prize.id), class: "btn btn-info" %>
+						<%= link_to 'Modifier', edit_prize_path(prize.id), class: "btn btn-warning" %>
+						<%= link_to 'Supprimer', prize,
+							method: :delete,
+							data:{
+								confirm: 'Etes-vous sur de vouloir supprimer ce lot ?'
+							},
+						class: 'btn btn-danger' %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
 
-<% else %>
-	<p>Il n'y a pas encore de lots</p>
-<% end %>
+	<% else %>
+		<p>Il n'y a pas encore de lots</p>
+	<% end %>
+</div>
