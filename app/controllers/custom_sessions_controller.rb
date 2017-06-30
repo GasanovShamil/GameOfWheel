@@ -8,9 +8,7 @@ class CustomSessionsController < Devise::SessionsController
   def after_login
   	if current_user.last_sign_in_at <= Date.today - 1.days
   		user = User.find(current_user.id)
-  		newtoken = user.tokens + 200
-  		user.tokens =  newtoken
-  		current_user.tokens = newtoken
+  		user.tokens += 200
   		user.save
   	end
   end

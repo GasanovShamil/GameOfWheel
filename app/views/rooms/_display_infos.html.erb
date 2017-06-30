@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-md-5">
+		<h3 class="text-center">Informations</h3>
+		<p>Début : <%= room.start_date %></p>
+		<p>Fin : <%= room.end_date %></p>
+		<p>Créé par :  <%= author.username %></p>
+		<p>Participation :  <%= room.share_price %></p>
+	</div>
+	<div class="col-md-5 col-md-offset-2">
+		<h3 class="text-center">Lot</h3>
+		<p>Nom : <%= room.prize.name %></p>
+		<p>Description : <%= room.prize.description %></p>
+		<p>Prix :  <%= room.prize.price %></p>
+		<p>Catégories :  <%= render partial: '/shared/categories_list', locals: { categories: room.prize.categories } %></p>
+	</div>
+</div>

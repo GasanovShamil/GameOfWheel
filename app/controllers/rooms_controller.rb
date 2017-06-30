@@ -1,11 +1,19 @@
 class RoomsController < ApplicationController
-	before_action :set_room, only: [:show, :edit, :update, :destroy]
+	before_action :set_room, only: [:show, :edit, :update, :destroy, :participate]
 
 	def index
 		@rooms = Room.paginate(page: params[:page], per_page: 9).includes(:prize)
 	end
 
 	def show
+		@created_by = User.find(@room.created_by)
+
+		winner = @room.winner
+		if winner != nil && winner > 0
+			@winner = User.find(winner)
+		end
+
+		@has_participated = current_user.rooms.where('rooms.id = ?', @room.id).count
 	end
 
 	def new
@@ -39,16 +47,24 @@ class RoomsController < ApplicationController
 		redirect_to rooms_path
 	end
 
+	def participate
+		me = User.find(current_user.id)
+		participation = UserRoom.create({ :user => current_user, :room => @room, :participate_date => DateTime.now })
+
+		if participation.valid?
+			me.tokens -= @room.share_price
+			me.save
+		else
+			flash[:danger] = participation.errors.first.second
+		end
+
+		redirect_to @room
+	end
+
 	private
 
 	def set_room
 		@room = Room.find(params[:id])
-		@created_by = User.find(@room.created_by)
-
-		winner = @room.winner
-		if winner != nil && winner > 0
-			@winner = User.find(winner)
-		end
 	end
 
 	def room_params

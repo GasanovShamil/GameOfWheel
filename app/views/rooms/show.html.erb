@@ -1,20 +1,22 @@
 <h1 class="text-center">Afficher un salon</h1>
 
-<div class="row">
-	<div class="col-md-5">
-		<h3 class="text-center">Informations</h3>
-		<p>Début : <%= @room.start_date %></p>
-		<p>Fin : <%= @room.end_date %></p>
-		<p>Créé par :  <%= @created_by.username %></p>
-	</div>
-	<div class="col-md-5 col-md-offset-2">
-		<h3 class="text-center">Lot</h3>
-		<p>Nom : <%= @room.prize.name %></p>
-		<p>Description : <%= @room.prize.description %></p>
-		<p>Prix :  <%= @room.prize.price %></p>
-		<p>Catégories :  <%= render partial: '/shared/categories_list', locals: { categories: @room.prize.categories } %></p>
-	</div>
-</div>
+<%= render partial: 'display_infos', locals: { room: @room, author: @created_by } %>
+
+<% if @has_participated > 0 %>
+	<p>Nombre de part :  <%= @has_participated %></p>
+	<% label_participate = 'Rajouter une part' %>
+	<% message_participate = 'Êtes-vous sûr(e) de vouloir racheter une part de ce salon ?' %>
+<% else %>
+	<% label_participate = 'Participer' %>
+	<% message_participate = 'Êtes-vous sûr(e) de vouloir acheter une part de ce salon ?' %>
+<% end %>
+
+<%= link_to label_participate, participate_room_path(@room), 
+	method: :get, 
+	data: { 
+		confirm: message_participate
+	}, 
+	class: 'btn btn-infos' %>
 
 <p>
 	<%= link_to 'Editer',  edit_room_path(@room), class: 'btn btn-warning' %>
