@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  	rescue_from CanCan::AccessDenied do |exception|
+    	redirect_to main_app.root_url, :alert => exception.message
+  	end
+
 	def configure_permitted_parameters
 		added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
 		devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
