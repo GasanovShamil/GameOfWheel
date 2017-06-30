@@ -1,9 +1,21 @@
 <h1 class="text-center">Afficher un salon</h1>
 
+<p>
+	<%= link_to 'Editer',  edit_room_path(@room), class: 'btn btn-warning' %>
+	<%= link_to 'Supprimer', @room, 
+		method: :delete, 
+		data: { 
+			confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce salon ?'
+		}, 
+		class: 'btn btn-danger' %>
+	<%= link_to 'Retour à la liste des salons', rooms_path, class: 'btn btn-success' %>
+</p>
+
 <%= render partial: 'display_infos', locals: { room: @room, author: @created_by } %>
 
-<% if @has_participated > 0 %>
-	<p>Nombre de part :  <%= @has_participated %></p>
+<% if @my_shares > 0 %>
+	<p>Mes parts :  <%= @my_shares %></p>
+	<p>Parts totales :  <%= @all_shares %></p>
 	<% label_participate = 'Rajouter une part' %>
 	<% message_participate = 'Êtes-vous sûr(e) de vouloir racheter une part de ce salon ?' %>
 <% else %>
@@ -16,15 +28,4 @@
 	data: { 
 		confirm: message_participate
 	}, 
-	class: 'btn btn-infos' %>
-
-<p>
-	<%= link_to 'Editer',  edit_room_path(@room), class: 'btn btn-warning' %>
-	<%= link_to 'Supprimer', @room, 
-		method: :delete, 
-		data: { 
-			confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce salon ?'
-		}, 
-		class: 'btn btn-danger' %>
-	<%= link_to 'Retour à la liste des salons', rooms_path, class: 'btn btn-success' %>
-</p>
+	class: 'btn btn-primary' %>

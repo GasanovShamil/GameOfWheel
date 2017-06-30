@@ -8,6 +8,11 @@
 		<%= csrf_meta_tags %>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+		<link rel="stylesheet" type="text/css" href="/assets/pie/jqplot.min.css" />
+		<script type="text/javascript" src="/assets/pie/jqplot.min.js"></script>
+		<script type="text/javascript" src="/assets/pie/jqplot.pieRenderer.js"></script>
+		<script type="text/javascript" src="/assets/pie/pie.js"></script>
 	</head>
 
 	<body>
@@ -26,9 +31,6 @@
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><%= link_to 'Accueil', root_path %></li>
-					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<% if user_signed_in? %>
 							<% if current_user.has_role?(:admin) %>

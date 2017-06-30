@@ -13,7 +13,8 @@ class RoomsController < ApplicationController
 			@winner = User.find(winner)
 		end
 
-		@has_participated = current_user.rooms.where('rooms.id = ?', @room.id).count
+		@my_shares = current_user.rooms.where('rooms.id = ?', @room.id).count
+		@all_shares = UserRoom.where('room_id = ?', @room.id).count
 	end
 
 	def new
