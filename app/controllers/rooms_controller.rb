@@ -7,12 +7,8 @@ class RoomsController < ApplicationController
 
 	def show
 		@created_by = User.find(@room.created_by)
-
-		winner = @room.winner
-		if winner != nil && winner > 0
-			@winner = User.find(winner)
-		end
-
+		@is_over = @room.winner != nil
+		@winner = (@is_over && @room.winner > 0) ? User.find(@room.winner) : nil
 		@my_shares = current_user.rooms.where('rooms.id = ?', @room.id).count
 		@all_shares = UserRoom.where('room_id = ?', @room.id).count
 	end
@@ -50,11 +46,12 @@ class RoomsController < ApplicationController
 
 	def participate
 		me = User.find(current_user.id)
-		participation = UserRoom.create({ :user => current_user, :room => @room, :participate_date => DateTime.now })
+		participation = UserRoom.create({ :user => me, :room => @room, :participation_date => DateTime.now })
 
 		if participation.valid?
 			me.tokens -= @room.share_price
 			me.save
+			flash[:success] = "Participation confirmée !"
 		else
 			flash[:danger] = participation.errors.first.second
 		end

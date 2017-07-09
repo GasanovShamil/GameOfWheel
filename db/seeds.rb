@@ -9,8 +9,8 @@
 #################### Users
 
 User.create!({:username => "Administrateur", :email => "admin@mail.com", :password => "password", :password_confirmation => "password" })
-u = User.last
-u.add_role :admin
+a = User.last
+a.add_role :admin
 
 User.create!({:username => "Utilisateur", :email => "user@mail.com", :password => "password", :password_confirmation => "password" })
 
@@ -41,5 +41,24 @@ PrizeCategory.create!({:prize_id => 3, :category_id => 6 })
 
 Room.create!({:winner => nil, :created_by => 1, :start_date => Date.parse('2017-06-01'), :end_date => Date.parse('2017-06-30'), :prize_id => 1, :share_price => 10 })
 Room.create!({:winner => nil, :created_by => 1, :start_date => Date.parse('2017-06-05'), :end_date => Date.parse('2017-06-06'), :prize_id => 1, :share_price => 20 })
-Room.create!({:winner => nil, :created_by => 1, :start_date => Date.parse('2017-06-10'), :end_date => Date.parse('2017-06-28'), :prize_id => 2, :share_price => 5 })
-Room.create!({:winner => nil, :created_by => 1, :start_date => Date.parse('2017-06-01'), :end_date => Date.parse('2017-07-31'), :prize_id => 3, :share_price => 15 })
+Room.create!({:winner => nil, :created_by => 1, :start_date => Date.parse('2017-06-10'), :end_date => Date.today - 1.days, :prize_id => 2, :share_price => 5 })
+Room.create!({:winner => nil, :created_by => 1, :start_date => Date.parse('2017-06-01'), :end_date => Date.today - 1.days, :prize_id => 3, :share_price => 15 })
+
+#################### UserRooms
+
+u = User.last
+r = Room.last
+
+UserRoom.create({ :user => a, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => a, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => u, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => a, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => u, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => u, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => u, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => u, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => u, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => a, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => u, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => u, :room => r, :participation_date => DateTime.now })
+UserRoom.create({ :user => a, :room => r, :participation_date => DateTime.now })

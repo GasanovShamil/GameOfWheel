@@ -13,19 +13,11 @@
 
 <%= render partial: 'display_infos', locals: { room: @room, author: @created_by } %>
 
-<% if @my_shares > 0 %>
-	<p>Mes parts :  <%= @my_shares %></p>
-	<p>Parts totales :  <%= @all_shares %></p>
-	<% label_participate = 'Rajouter une part' %>
-	<% message_participate = 'Êtes-vous sûr(e) de vouloir racheter une part de ce salon ?' %>
-<% else %>
-	<% label_participate = 'Participer' %>
-	<% message_participate = 'Êtes-vous sûr(e) de vouloir acheter une part de ce salon ?' %>
-<% end %>
+<hr />
 
-<%= link_to label_participate, participate_room_path(@room), 
-	method: :get, 
-	data: { 
-		confirm: message_participate
-	}, 
-	class: 'btn btn-primary' %>
+
+<% if @winner != nil %>
+	<%= render partial: 'win_infos', locals: { is_winner: @winner.id == current_user.id } %>
+<% elsif !@is_over %>
+	<%= render partial: 'participation_infos', locals: { room: @room, my_shares: @my_shares, all_shares: @all_shares } %>
+<% end %>
