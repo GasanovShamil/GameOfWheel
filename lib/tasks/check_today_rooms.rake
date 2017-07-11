@@ -1,5 +1,5 @@
 namespace :admin  do
-	desc "Check the rooms that ended today to get the winner"
+	desc "Check the rooms that ended yesterday to get the winner"
 	task :check_today_rooms => :environment do
 		rooms = Room.where('end_date = ?', Date.today - 1.days)
 		rooms.each do |room|

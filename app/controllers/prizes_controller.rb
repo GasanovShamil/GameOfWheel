@@ -4,6 +4,7 @@ class PrizesController < ApplicationController
 	def index
 		@searchName = params[:searchName]
 		@searchCategory = params[:searchCategory]
+
 		@prizes = Prize.all
 
 		if @searchName != nil && @searchName != ''

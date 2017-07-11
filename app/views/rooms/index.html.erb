@@ -4,6 +4,34 @@
 		<%= link_to 'Ajouter', new_room_path, class: "btn btn-success" %>
 	<% end %>
 </h1>
+
+<form class="form-inline row" method="get" action="">
+
+	<div class="md-form form-group col-md-3">
+		<input type="text" name="searchBefore" class="form-control" value="<%= @searchBefore %>" placeholder="Salon avant le" />
+	</div>
+
+	<div class="md-form form-group col-md-3">
+		<input type="text" name="searchAfter" class="form-control" value="<%= @searchAfter %>" placeholder="Salon après le" />
+	</div>
+
+	<div class="md-form form-group col-md-3">
+		<input type="text" name="searchCategory" class="form-control" value="<%= @searchCategory %>" placeholder="Rechercher par catégorie" />
+	</div>
+
+	<div class="md-form form-group col-md-3">
+		<input type="text" name="searchPrice" class="form-control" value="<%= @searchPrice %>" placeholder="Prix max" />
+	</div>
+
+	<div class="md-form form-group col-md-3">
+		<input type="text" name="searchParticipation" class="form-control" value="<%= @searchParticipation %>" placeholder="Participation max" />
+	</div>
+
+	<div class="md-form form-group col-md-3">
+		<input type="submit" class="btn btn-primary btn-lg" value="Rechercher" />
+	</div>
+
+</form>
 	
 <% if @rooms.any? %>
 	<%= will_paginate @rooms, renderer: BootstrapPagination::Rails %>
