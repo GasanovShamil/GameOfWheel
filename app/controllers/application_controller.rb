@@ -4,9 +4,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  	rescue_from CanCan::AccessDenied do |exception|
-    	redirect_to main_app.root_url, :alert => exception.message
-  	end
+	rescue_from CanCan::AccessDenied do |exception|
+		flash[:danger] = exception.message
+		if request.env['HTTP_REFERER'].present?
+			redirect_to :back
+		else
+			redirect_to root_url
+		end
+	end
 
 	def configure_permitted_parameters
 		added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]

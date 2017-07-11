@@ -2,7 +2,19 @@ class PrizesController < ApplicationController
 	load_and_authorize_resource
 
 	def index
-		@prizes = Prize.paginate(page: params[:page], per_page: 10)
+		@searchName = params[:searchName]
+		@searchCategory = params[:searchCategory]
+		@prizes = Prize.all
+
+		if @searchName != nil && @searchName != ''
+			@prizes = @prizes.search(name: @searchName)
+		end
+
+		if @searchCategory != nil && @searchCategory != ''
+			@prizes = @prizes.search(category: @searchCategory)
+		end
+
+		@prizes = @prizes.paginate(page: params[:page], per_page: 10)
 	end
 
 	def show

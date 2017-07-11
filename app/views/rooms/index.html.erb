@@ -1,4 +1,9 @@
-<h1>Liste des salons <%= link_to 'Ajouter', new_room_path, class: "btn btn-success" %></h1>
+<h1>
+	<span>Liste des salons</span>
+	<% if can? :create, @room %>
+		<%= link_to 'Ajouter', new_room_path, class: "btn btn-success" %>
+	<% end %>
+</h1>
 	
 <% if @rooms.any? %>
 	<%= will_paginate @rooms, renderer: BootstrapPagination::Rails %>
@@ -6,7 +11,6 @@
 	<% @rooms.each do |room| %>
 		<%= render partial: "/shared/room_container", locals: { room: room } %>
 	<% end %>
-	
 <% else %>
 	<p>Il n'y a pas encore de salon</p>
 <% end %>

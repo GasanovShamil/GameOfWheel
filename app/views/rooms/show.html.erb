@@ -1,13 +1,19 @@
 <h1 class="text-center">Afficher un salon</h1>
 
 <p>
-	<%= link_to 'Editer',  edit_room_path(@room), class: 'btn btn-warning' %>
-	<%= link_to 'Supprimer', @room, 
-		method: :delete, 
-		data: { 
-			confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce salon ?'
-		}, 
-		class: 'btn btn-danger' %>
+	<% if @room.start_date > Date.today %>
+		<%= link_to 'Editer',  edit_room_path(@room), class: 'btn btn-warning' %>
+	<% end %>
+
+	<% if can? :destroy, @room %>
+		<%= link_to 'Supprimer', @room, 
+			method: :delete, 
+			data: { 
+				confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce salon ?'
+			}, 
+			class: 'btn btn-danger' %>
+	<% end %>
+
 	<%= link_to 'Retour à la liste des salons', rooms_path, class: 'btn btn-success' %>
 </p>
 
@@ -15,9 +21,8 @@
 
 <hr />
 
-
-<% if @winner != nil %>
-	<%= render partial: 'win_infos', locals: { is_winner: @winner.id == current_user.id } %>
-<% elsif !@is_over %>
+<% if @winner == nil %>
 	<%= render partial: 'participation_infos', locals: { room: @room, my_shares: @my_shares, all_shares: @all_shares } %>
+<% elsif @winner != -1 %>
+	<%= render partial: 'win_infos', locals: { is_winner: @winner.id == current_user.id } %>
 <% end %>

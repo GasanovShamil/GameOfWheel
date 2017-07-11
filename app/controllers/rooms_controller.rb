@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
-	before_action :set_room, only: [:show, :edit, :update, :destroy, :participate]
+	load_and_authorize_resource except: [:index, :show, :participate]
+	before_action :set_room, only: [:show, :participate]
 
 	def index
 		@rooms = Room.paginate(page: params[:page], per_page: 9).includes(:prize)
@@ -7,8 +8,7 @@ class RoomsController < ApplicationController
 
 	def show
 		@created_by = User.find(@room.created_by)
-		@is_over = @room.winner != nil
-		@winner = (@is_over && @room.winner > 0) ? User.find(@room.winner) : nil
+		@winner = @room.winner != nil ? (@room.winner > 0 ? User.find(@room.winner) : -1) : nil
 		@my_shares = current_user.rooms.where('rooms.id = ?', @room.id).count
 		@all_shares = UserRoom.where('room_id = ?', @room.id).count
 	end

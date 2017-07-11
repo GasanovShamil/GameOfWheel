@@ -26,6 +26,7 @@ gem 'devise-i18n'
 gem 'cancancan'
 gem 'rolify'
 gem 'font-awesome-sass'
+gem 'search_cop'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

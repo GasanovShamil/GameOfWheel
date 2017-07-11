@@ -7,10 +7,28 @@
 			<h2><%= link_to 'Ajouter', new_prize_path, class: "btn btn-success text-right" %></h2>
 		</div>
 	</div>
+
+	<form class="form-inline row" method="get" action="">
+
+		<div class="md-form form-group col-md-3">
+			<input type="text" id="searchName" name="searchName" class="form-control" value="<%= @searchName %>" />
+			<label for="searchName">Rechercher par nom</label>
+		</div>
+
+		<div class="md-form form-group col-md-3">
+			<input type="text" id="searchCategory" name="searchCategory" class="form-control" value="<%= @searchCategory %>" />
+			<label for="searchCategory">Rechercher par catégorie(s)</label>
+		</div>
+
+		<div class="md-form form-group col-md-3">
+			<input type="submit" class="btn btn-primary btn-lg" value="Rechercher" />
+		</div>
+
+	</form>
+
+	<hr />
 		
 	<% if @prizes.any? %>
-
-		<%= will_paginate @prizes, renderer: BootstrapPagination::Rails %>
 
 		<table class="table table-stripped">
 			<thead>
@@ -40,6 +58,8 @@
 				<% end %>
 			</tbody>
 		</table>
+
+		<%= will_paginate @prizes, renderer: BootstrapPagination::Rails %>
 
 	<% else %>
 		<p>Il n'y a pas encore de lots</p>
