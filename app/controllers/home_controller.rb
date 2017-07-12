@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 		@all_rooms = Room.where('start_date <= ? AND end_date >= ?', DateTime.now, DateTime.now).order("RANDOM()").limit(3)
 
 		if user_signed_in?
-			@my_rooms = current_user.rooms.order("RANDOM()").limit(3).uniq
+			@my_rooms = current_user.rooms.order("RANDOM()").limit(3)
 		end
 	end
 end
