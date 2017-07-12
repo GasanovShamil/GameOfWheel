@@ -8,33 +8,33 @@
 
 	<div id="room-participation"></div>
 	<script type="text/javascript">
-
-		var shares = [
-			['Mes parts <span class="badge blue">' + <%= my_shares %> + '</span>', <%= my_shares %>],
-			['Parts des autres joueurs', <%= all_shares - my_shares %>]
-		];
-
 		$(document).ready(function() {
-			var plot = jQuery.jqplot ('room-participation', [shares], {
-				title: 'Participation au salon',
-				seriesDefaults: {
-					renderer: jQuery.jqplot.PieRenderer, 
-					rendererOptions: {
-						fill: true,
-						showDataLabels: true, 
-						sliceMargin: 1, 
-						lineWidth: 5
+			var shares = [
+				['Mes parts <span class="badge blue">' + <%= my_shares %> + '</span>', <%= my_shares %>],
+				['Parts des autres joueurs', <%= all_shares - my_shares %>]
+			];
+
+			$(document).ready(function() {
+				var plot = jQuery.jqplot ('room-participation', [shares], {
+					title: 'Participation au salon',
+					seriesDefaults: {
+						renderer: jQuery.jqplot.PieRenderer, 
+						rendererOptions: {
+							fill: true,
+							showDataLabels: true, 
+							sliceMargin: 1, 
+							lineWidth: 5
+						}
+					}, 
+					legend: {
+						show: true,
+						location: 'ne',
+						rowSpacing: '0.5em',
+						fontSize: '25px'
 					}
-				}, 
-				legend: {
-					show: true,
-					location: 'ne',
-					rowSpacing: '0.5em',
-					fontSize: '25px'
-				}
+				});
 			});
 		});
-
 	</script>
 <% else %>
 	<%= link_to 'Participer', participate_room_path(room), 

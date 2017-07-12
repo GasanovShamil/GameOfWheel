@@ -5,29 +5,29 @@
 	<% end %>
 </h1>
 
-<form class="form-inline row" method="get" action="">
+<form class="form-inline" method="get" action="">
 
-	<div class="md-form form-group col-md-3">
-		<input type="text" name="searchBefore" class="form-control" value="<%= @searchBefore %>" placeholder="Salon avant le" />
+	<div class="md-form form-group">
+		<input id="searchBefore" type="date" name="searchBefore" class="form-control" />
+		<label for="searchBefore" class="active">Avant le</label>
 	</div>
 
-	<div class="md-form form-group col-md-3">
-		<input type="text" name="searchAfter" class="form-control" value="<%= @searchAfter %>" placeholder="Salon après le" />
+	<div class="md-form form-group">
+		<input id="searchAfter" type="date" name="searchAfter" class="form-control" />
+		<label for="searchAfter" class="active">Après le</label>
 	</div>
 
-	<div class="md-form form-group col-md-3">
-		<input type="text" name="searchCategory" class="form-control" value="<%= @searchCategory %>" placeholder="Rechercher par catégorie" />
+	<div class="md-form form-group">
+		<input id="searchPrice" type="text" name="searchPrice" class="form-control" />
+		<label for="searchPrice" class="active">Prix max</label>
 	</div>
 
-	<div class="md-form form-group col-md-3">
-		<input type="text" name="searchPrice" class="form-control" value="<%= @searchPrice %>" placeholder="Prix max" />
+	<div class="md-form form-group">
+		<input id="searchParticipation" type="text" name="searchParticipation" class="form-control" />
+		<label for="searchParticipation" class="active">Participation max</label>
 	</div>
 
-	<div class="md-form form-group col-md-3">
-		<input type="text" name="searchParticipation" class="form-control" value="<%= @searchParticipation %>" placeholder="Participation max" />
-	</div>
-
-	<div class="md-form form-group col-md-3">
+	<div class="md-form form-group pull">
 		<input type="submit" class="btn btn-primary btn-lg" value="Rechercher" />
 	</div>
 

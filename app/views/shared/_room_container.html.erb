@@ -1,5 +1,5 @@
 <div class="col-md-4 portfolio-item">
-	<%= link_to image_tag("http://placehold.it/700x400", class: "img-responsive"), room_path(room.id) %>
+	<%= link_to image_tag(room.prize.photo_path != nil ? room.prize.photo_path : "http://placehold.it/700x400", class: "img-responsive", style: "margin: auto; max-width: 90%; max-height: 200px;"), room_path(room.id) %>	
 	<h3>
 		<%= link_to "Salon - " + room.prize.name, room_path(room.id) %>
 		<small class="pull-right"><%= room.prize.price %> <i class="fa fa-eur"></i></small>

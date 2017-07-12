@@ -2,25 +2,29 @@
 
 	<div class="row">
 		<div class="md-form form-group col-lg-5">
-			<p><%= field.input :start_date, label: 'Nom', class: 'form-control' %></p>
+			<%= field.input :start_date, label: false, class: 'form-control' %>
+			<label for="room_start_date" class="active">Début</label>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="md-form form-group col-lg-5">
-			<p><%= field.input :end_date, label: 'Niveau', class: 'form-control' %></p>
+			<%= field.input :end_date, label: false, class: 'form-control active' %>
+			<label for="room_end_date" class="active">Fin</label>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="md-form form-group col-lg-5">
-			<p><%= field.input :share_price, label: 'Participation', class: 'form-control' %></p>
+			<%= field.input :share_price, label: false, class: 'form-control' %>
+			<label for="room_share_price" class="active">Participation</label>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="md-form form-group col-lg-5">
-			<p><%= field.association :prize, label: 'Lot', class: 'form-control' %></p>
+			<%= field.association :prize, label: false, class: 'form-control' %>
+			<label for="room_prize" class="active">Lot</label>
 		</div>
 	</div>
 

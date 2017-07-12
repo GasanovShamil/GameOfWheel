@@ -25,9 +25,9 @@ Category.create!({:name => "Jeux" })
 
 #################### Prizes
 
-Prize.create!({:name => "IPhone 7", :description => "Téléphone apple", :photo_path => nil, :price => 799.99 })
-Prize.create!({:name => "VTT BTwin", :description => "Superbe vélo tout terrain", :photo_path => nil, :price => 347.49 })
-Prize.create!({:name => "Playstation 4", :description => "Console de jeu de salon par Sony", :photo_path => nil, :price => 399 })
+Prize.create!({:name => "IPhone 7", :description => "Téléphone apple", :photo_path => "http://img.gentside.com/iphone-7/iphone-7-vodafone_159136_w460.jpg", :price => 799.99 })
+Prize.create!({:name => "VTT BTwin", :description => "Superbe vélo tout terrain", :photo_path => "https://medias.ultimebike.com/cache/ultimebike/rhs2/800/800/6/1/b/61b7eeceadd51735345d232e2e146201/velo-vtt-orka-y-one-dh-200-mm.jpg", :price => 347.49 })
+Prize.create!({:name => "Playstation 4", :description => "Console de jeu de salon par Sony", :photo_path => "http://image.jeuxvideo.com/medias-md/147127/1471272039-8221-card.jpg", :price => 399 })
 
 #################### PrizeCategories
 

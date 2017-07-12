@@ -2,8 +2,8 @@ class Room < ApplicationRecord
 	include SearchCop
 	
 	search_scope :search do
-		attributes :start_date, :end_date, :share_price
-		attributes prize_price: ["prize.price"]
+		attributes :start_date, :end_date
+		attributes prize_price: "prize.price"
 	end
 
 	has_one :user, foreign_key: 'winner'

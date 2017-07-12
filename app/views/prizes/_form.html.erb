@@ -3,30 +3,35 @@
 		<div class="col-md-6">
 			<div class="row">
 				<div class="md-form form-group col-lg-6">
-					<p><%= field.input :name, label: 'Nom', class: 'form-control' %></p>
+					<%= field.input :name, label: false, class: 'form-control' %>
+					<label for="prize_name" class="active">Nom</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="md-form form-group col-lg-6">
-					<p><%= field.input :description, label: 'Description', class: 'form-control' %></p>
+					<%= field.input :description, label: false, class: 'form-control' %>
+					<label for="prize_description" class="active">Description</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="md-form form-group col-lg-6">
-					<p><%= field.input :photo_path, label: 'Image', class: 'form-control' %></p>
+					<%= field.input :photo_path, label: false, class: 'form-control' %>
+					<label for="prize_photo_path" class="active">Image</label>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="row">
 				<div class="md-form form-group col-lg-6">
-					<p><%= field.input :price, label: 'Prix', class: 'form-control' %></p>
+					<%= field.input :price, label: false, class: 'form-control' %>
+					<label for="prize_price" class="active">Prix</label>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="md-form form-group col-lg-6">
-					<p><%= field.association :categories, label: 'Catégories', as: :check_boxes, class: 'form-control'%></p>
+					<%= field.association :categories, label: false, class: 'form-control'%>
+					<label for="prize_categories" class="active">Catégories</label>
 				</div>
 			</div>
 		</div>

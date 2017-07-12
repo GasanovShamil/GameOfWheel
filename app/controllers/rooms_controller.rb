@@ -1,35 +1,25 @@
 class RoomsController < ApplicationController
 	load_and_authorize_resource except: [:index, :show, :participate]
 	before_action :authenticate_user!, :set_room, only: [:show, :participate]
+	before_action :set_search, only: :index
 
 	def index
-		@searchBefore = params[:searchBefore]
-		@searchAfter = params[:searchAfter]
-		@searchCategory = params[:searchCategory]
-		@searchPrice = params[:searchPrice]
-		@searchParticipation = params[:searchParticipation]
-
-		@rooms = Room
-		.all
+		@rooms = Room.all
 
 		if @searchBefore != nil && @searchBefore != ''
-			@rooms = @rooms.search(name: @searchBefore)
+			@rooms = @rooms.search(end_date: { lt: @searchBefore })
 		end
 
 		if @searchAfter != nil && @searchAfter != ''
-			@rooms = @rooms.search(category: @searchAfter)
-		end
-
-		if @searchCategory != nil && @searchCategory != ''
-			@rooms = @rooms.search(category: @searchCategory)
+			@rooms = @rooms.search(start_date: { gteq: @searchAfter })
 		end
 
 		if @searchPrice != nil && @searchPrice != ''
-			@rooms = @rooms.search(prize_price: {lt: 10})
+			@rooms = @rooms.search(prize_price: { lteq: @searchPrice })
 		end
 
 		if @searchParticipation != nil && @searchParticipation != ''
-			@rooms = @rooms.search(share_price: {lt: 10})
+			@rooms = @rooms.where('share_price <= ? ', @searchParticipation)
 		end
 
 		@rooms = @rooms.paginate(page: params[:page], per_page: 9).includes(:prize)
@@ -92,6 +82,13 @@ class RoomsController < ApplicationController
 
 	def set_room
 		@room = Room.find(params[:id])
+	end
+
+	def set_search
+		@searchBefore = params[:searchBefore]
+		@searchAfter = params[:searchAfter]
+		@searchPrice = params[:searchPrice]
+		@searchParticipation = params[:searchParticipation]
 	end
 
 	def room_params
