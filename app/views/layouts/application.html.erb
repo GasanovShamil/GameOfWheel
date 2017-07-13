@@ -28,32 +28,32 @@
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<% if user_signed_in? %>
-							<% if current_user.has_role?(:admin) %>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><%= link_to 'Catégories', categories_path %></li>
-										<li><%= link_to 'Lots', prizes_path %></li>
-										<li><%= link_to 'Salons', rooms_path %></li>
-									</ul>
-								</li>
-							<% end %>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %><span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><label class="navbar-text"><%= current_user.tokens%> tokens</label></li>
-									<li><%= link_to 'Mon compte', edit_user_registration_path %></li>
-									<li role="separator" class="divider"></li>
-									<li><%= link_to 'Se deconnecter', destroy_user_session_path, method: :delete %></li>
-								</ul>
-							</li>
-						<% else %>
-							<li><%= link_to 'S\'inscrire', new_user_registration_path %></li>
-							<li><%= link_to 'Se connecter', new_user_session_path %></li>
-						<%end%>
+				<% if user_signed_in? %>
+					<ul class="nav navbar-nav">
+						<li><%= link_to 'Mes salons', showmyrooms_room_path(current_user::id) %></li>
+						<li><%= link_to 'Salons', rooms_path %></li>
+						<% if current_user.has_role?(:admin) %>
+							<li><%= link_to 'Catégories', categories_path %></li>
+							<li><%= link_to 'Lots', prizes_path %></li>
+						<% end %>
 					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %><span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><label class="navbar-text"><%= current_user.tokens%> tokens</label></li>
+								<li><%= link_to 'Mon compte', edit_user_registration_path %></li>
+								<li role="separator" class="divider"></li>
+								<li><%= link_to 'Se deconnecter', destroy_user_session_path, method: :delete %></li>
+							</ul>
+						</li>
+					</ul>
+				<% else %>
+					<ul class="nav navbar-nav navbar-right">
+						<li><%= link_to 'S\'inscrire', new_user_registration_path %></li>
+						<li><%= link_to 'Se connecter', new_user_session_path %></li>
+					</ul>
+				<%end%>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
@@ -69,3 +69,6 @@
 		</div>
 	</body>
 </html>
+
+
+							

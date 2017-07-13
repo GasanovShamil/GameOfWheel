@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :rooms do
 	get 'participate', :on => :member
+	get 'showmyrooms', :on => :member
   end
   resources :prizes
   resources :categories

@@ -43,5 +43,6 @@
 			<%= render partial: "/shared/room_container", locals: { room: room } %>
 		<% end %>
 	</div>
+	<%= link_to 'Voir tout mes salons', showmyrooms_room_path(current_user::id) %>
 
 <% end %>

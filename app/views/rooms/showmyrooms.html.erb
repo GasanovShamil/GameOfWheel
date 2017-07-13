@@ -1,0 +1,19 @@
+<% if user_signed_in? && @my_rooms.any? %>
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header"><%= current_user.username %></h1>
+			<small>Nombre de tokens restants : <span class="label label-default"><%= current_user.tokens%></span></small>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<h2>Mes salons</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<% @my_rooms.each do |room| %>
+			<%= render partial: "/shared/room_container", locals: { room: room } %>
+		<% end %>
+	</div>
+<% end %>

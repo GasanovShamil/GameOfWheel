@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
-	load_and_authorize_resource except: [:index, :show, :participate]
-	before_action :authenticate_user!, :set_room, only: [:show, :participate]
+	load_and_authorize_resource except: [:index, :show, :participate, :showmyrooms]
+	before_action :authenticate_user!, :set_room, only: [:show, :participate, :showmyrooms]
 	before_action :set_search, only: :index
 
 	def index
@@ -76,6 +76,10 @@ class RoomsController < ApplicationController
 		end
 
 		redirect_to @room
+	end
+
+	def showmyrooms
+		@my_rooms = current_user.rooms.select("DISTINCT rooms.*")
 	end
 
 	private
