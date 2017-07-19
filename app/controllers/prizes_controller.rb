@@ -54,6 +54,6 @@ class PrizesController < ApplicationController
 	private
 
 	def prize_params
-		params.require(:prize).permit(:name, :description, :photo_path, :price)
+		params.require(:prize).permit(:name, :description, :photo_path, :price, category_ids: [])
 	end
 end

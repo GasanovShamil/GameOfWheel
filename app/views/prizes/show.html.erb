@@ -1,9 +1,10 @@
 <h1>Afficher un lot</h1>
 
 <p>Nom : <%= @prize.name %></p>
-<p>Description : <%= @prize.name %></p>
-<p>Photo : <%= @prize.name %></p>
-<p>Prix : <%= @prize.name %></p>
+<p>Description : <%= @prize.description %></p>
+<p>Photo : </p>
+<img src="<%= @prize.photo_path %>" class="img-fluid" />
+<p>Prix : <%= @prize.price %></p>
 <p>Catégories : <%= render partial: '/shared/categories_list', locals: { categories: @prize.categories } %></p>
 
 <p>
